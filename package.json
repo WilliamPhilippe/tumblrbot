@@ -25,10 +25,11 @@
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "ts-node-dev": "^1.0.0-pre.57",
+    "tsconfig-paths": "^3.9.0",
     "typescript": "^3.9.7"
   },
   "scripts": {
-    "devs": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
+    "devs": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
     "build": "tsc"
   }
 }
