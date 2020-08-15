@@ -12,4 +12,15 @@ async function create(request: Request, response: Response): Promise<Response> {
   return response.status(200).json({ user: data });
 }
 
-export default { create };
+async function getUserInfo(
+  request: Request,
+  response: Response,
+): Promise<Response> {
+  const getUser = new UserServices();
+
+  getUser.getBlogInfo(response);
+
+  return response;
+}
+
+export default { create, getUserInfo };
