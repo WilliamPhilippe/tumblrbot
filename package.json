@@ -1,0 +1,34 @@
+{
+  "name": "tumblrbot",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "https://github.com/WilliamPhilippe/tumblrbot.git",
+  "author": "William Philippe <wplb@ic.ufal.br>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/cors": "^2.8.7",
+    "axios": "^0.19.2",
+    "celebrate": "^12.2.0",
+    "cors": "^2.8.5",
+    "eslint": "^7.7.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-typescript": "^2.2.1",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "ts-node-dev": "^1.0.0-pre.57",
+    "typescript": "^3.9.7"
+  },
+  "scripts": {
+    "devs": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
+    "build": "tsc"
+  }
+}
