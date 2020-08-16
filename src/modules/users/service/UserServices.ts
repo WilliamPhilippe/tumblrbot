@@ -12,10 +12,12 @@ class UserService {
 
   public create(data: Fields): string {
     this.user.set(data);
+    return this.user.createClient();
   }
 
-  public getBlogInfo(response: Response): any {
-    return this.user.getBlogInfo(response);
+  public async getBlogInfo(response: Response): any {
+    const res = await this.user.getBlogInfo(response);
+    return res;
   }
 }
 

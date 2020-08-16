@@ -18,7 +18,11 @@ async function getUserInfo(
 ): Promise<Response> {
   const getUser = new UserServices();
 
-  getUser.getBlogInfo(response);
+  console.log(1);
+
+  await getUser.getBlogInfo(response);
+
+  console.log(3);
 
   return response;
 }

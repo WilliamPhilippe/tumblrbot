@@ -2,8 +2,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 
-import { errors } from 'celebrate';
-
 import AppError from '@shared/erros/AppError';
 import routes from './routes';
 
@@ -13,8 +11,6 @@ app.use(cors());
 
 app.use(express.json());
 app.use(routes);
-
-app.use(errors());
 
 app.use(
   (error: Error, request: Request, response: Response, _: NextFunction) => {

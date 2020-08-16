@@ -4,6 +4,8 @@ import { createClient, TumblrClient } from 'tumblr.js';
 
 import { Response } from 'express';
 
+import AppError from '@shared/erros/AppError';
+
 interface Fields {
   consumer_key: string;
 
@@ -23,12 +25,21 @@ class UserRepository {
     return this.data;
   }
 
+  public getClient(): TumblrClient {
+    if (!this.client) throw new AppError('The client is not initiliazed.', 404);
+
+    return this.client;
+  }
+
   public set(data: Fields): void {
     this.data = data;
   }
 
   public createClient(): string {
-    this.client = createClient(this.data);
+    this.client = createClient({
+      credentials: this.data,
+      returnPromisses: true,
+    });
 
     this.client.addPostMethods({
       addPostOnQueue: ['/v2/blog/:blogIdentifier/posts', ['id']],
@@ -42,8 +53,14 @@ class UserRepository {
       return response.status(401).json({ Message: 'Client not initialized.' });
 
     this.client.blogInfo('encardido.tumblr.com', (err, data) => {
-      return response.status(200).json({ data });
+      return this.logInfo(response, data);
     });
+  }
+
+  private async logInfo(response: Response, data: string): Response {
+    console.log(2);
+
+    return response.status(200).json({ data });
   }
 }
 
